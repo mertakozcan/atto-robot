@@ -117,6 +117,7 @@ void MotorController::ConfigurePWM() {
 }
 
 void MotorController::ConfigureGPIO() {
+  // TODO: Use another GPIO Port (not E!)
   SYSCTL_RCGCGPIO_R = 0x10;
   GPIO_PORTE_DIR_R = 0x1E;
   GPIO_PORTE_DEN_R = 0x1E;

@@ -5,19 +5,28 @@
 #ifndef DISTANCE_CONTROLLER_H
 #define DISTANCE_CONTROLLER_H
 
+#include "tm4c123gh6pm.h"
+#include <cmath>
+
 class DistanceController {
 
 public:
-
   DistanceController() {}
+  
+  // Configure registers relevant to distance sensors.
+  void Configure();
 
-  // Check if there is an obstacle in current direction.
-  bool CheckObstacle();
+  // Check if there is an obstacle.
+  bool CheckObstacleForward();
+  bool CheckObstacleLeft();
+  bool CheckObstacleRight();
 
 protected:
+  // Configure ADC to read data from distance sensors.
+  void ConfigureADC();
   
-  // TODO: Add all method definitions implemented by Andrew and Cloe for sensor.
-  
+  // Calculate distance to obstacle
+  bool IsObstacle(volatile int result);
 };
 
 #endif //DISTANCE_CONTROLLER_H

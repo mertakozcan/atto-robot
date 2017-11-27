@@ -8,5 +8,7 @@ void RobotBrain::Work() {
     motorController = new MotorController();
     motorController->Move(Direction::NORTH);
     distanceController = new DistanceController();
-    distanceController->CheckObstacle();
+    distanceController->CheckObstacleForward();
+    distanceController->CheckObstacleLeft();
+    distanceController->CheckObstacleRight();
 }
