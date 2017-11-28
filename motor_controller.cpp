@@ -117,11 +117,11 @@ void MotorController::ConfigurePWM() {
 }
 
 void MotorController::ConfigureGPIO() {
-  // TODO: Use another GPIO Port (not E!)
-  SYSCTL_RCGCGPIO_R = 0x10;
-  GPIO_PORTE_DIR_R = 0x1E;
-  GPIO_PORTE_DEN_R = 0x1E;
-  GPIO_PORTE_DATA_R &= ~0x1E;
+  // Use GPIO Port D for motor direction.
+  SYSCTL_RCGCGPIO_R |= 0x08;
+  GPIO_PORTD_DIR_R = 0x0F;
+  GPIO_PORTD_DEN_R = 0x0F;
+  GPIO_PORTD_DATA_R &= ~0x0F;
 }
 
 void MotorController::ConfigureTimer() {
@@ -143,17 +143,17 @@ void MotorController::SetMotorSpeed(int left, int right) {
 }
 
 void MotorController::SetMotorDirection(int left, int right) {
-  // PE1 and PE2 controls the direction of left motor,
-  // PE3 and PE4 controls the direction of right motor.
-  // PE1 and PE3 are connected to ccw, PE2 and PE4 are
+  // PD0 and PD1 controls the direction of left motor,
+  // PD2 and PD3 controls the direction of right motor.
+  // PD0 and PD2 are connected to ccw, PD1 and PD3 are
   // connected to cw.
-  GPIO_PORTE_DATA_R &= ~0x1E;
+  GPIO_PORTD_DATA_R &= ~0x0F;
   // Left motor direction
-  if (left == 0) GPIO_PORTE_DATA_R |= 0x02;
-  else if (left == 1) GPIO_PORTE_DATA_R |= 0x04;
+  if (left == 0) GPIO_PORTD_DATA_R |= 0x01;
+  else if (left == 1) GPIO_PORTD_DATA_R |= 0x02;
   // Right motor direction
-  if (right == 0) GPIO_PORTE_DATA_R |= 0x08;
-  else if (right == 1) GPIO_PORTE_DATA_R |= 0x10;
+  if (right == 0) GPIO_PORTD_DATA_R |= 0x04;
+  else if (right == 1) GPIO_PORTD_DATA_R |= 0x08;
 }
 
 void MotorController::StartTimer(int load_value) {
