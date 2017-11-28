@@ -173,10 +173,6 @@
                     <name>ICCARM</name>
                     <file> 45 103 22 34 16 5 35 32 33 50 51 52 11 17 61 48</file>
                 </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 34 35 22 51 33 5 11 103 50 32 17 45 16 52 61 48</file>
-                </tool>
             </inputs>
         </file>
         <file>

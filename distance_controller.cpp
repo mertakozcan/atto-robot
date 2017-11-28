@@ -66,9 +66,8 @@ void DistanceController::ConfigureADC() {
   
   // Disable SS3, SS2 and SS1 before configuration
   ADC0_ACTSS_R &= ~0xE;
-  // Should it be (&=) ???
   // Software trigger conversion
-  ADC0_EMUX_R |= ~0xFFF0;
+  ADC0_EMUX_R &= ~0xFFF0;
   // Set input channels
   ADC0_SSMUX3_R |= 0x0;
   ADC0_SSMUX2_R |= 0x1;
