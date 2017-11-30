@@ -8,10 +8,24 @@
 #include "motor_controller.h"
 #include "distance_controller.h"
 
+/*
+enum Direction {
+  NORTH,
+  SOUTH,
+  EAST,
+  WEST,
+  START,
+  STOP
+};
+*/
+
 class RobotBrain {
 
 public:
-  RobotBrain() {}
+  RobotBrain() {
+    motorController = new MotorController();
+    distanceController = new DistanceController();
+  }
   
   ~RobotBrain() {
     delete motorController;
@@ -23,7 +37,6 @@ public:
 protected:
   MotorController *motorController;
   DistanceController *distanceController;
-
 };
 
 #endif //ROBOT_BRAIN_H

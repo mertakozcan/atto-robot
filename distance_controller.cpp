@@ -13,7 +13,7 @@ bool DistanceController::CheckObstacleForward() {
   ADC0_ISC_R |= (1<<3);
   volatile int result = ADC0_SSFIFO3_R;
   // Check whether there is an obstacle in forward direction.
-  return IsObstacle(result);
+  return !IsObstacle(result);
 }
 
 bool DistanceController::CheckObstacleLeft() {
@@ -25,7 +25,7 @@ bool DistanceController::CheckObstacleLeft() {
   ADC0_ISC_R |= (1<<2);
   volatile int result = ADC0_SSFIFO2_R;
   // Check whether there is an obstacle in forward direction.
-  return IsObstacle(result);
+  return !IsObstacle(result);
 }
 
 bool DistanceController::CheckObstacleRight() {
@@ -37,13 +37,13 @@ bool DistanceController::CheckObstacleRight() {
   ADC0_ISC_R |= (1<<1);
   volatile int result = ADC0_SSFIFO1_R;
   // Check whether there is an obstacle in forward direction.
-  return IsObstacle(result);
+  return !IsObstacle(result);
 }
 
 bool DistanceController::IsObstacle(volatile int result) {
   double volts = (result * 3.3) / 4095; // Input 3.3V
   double distance = 27.86 * (1 / (pow(volts, 1.15)));
-  return (distance < 17);
+  return (distance < 17.0);
 }
 
 void DistanceController::Configure() {

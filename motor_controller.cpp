@@ -4,90 +4,49 @@
 
 #include "motor_controller.h"
 
-void MotorController::Move(Direction direction) {
-  if (currentDirection == Direction::START) currentDirection = direction;
-  if (direction == currentDirection) {
-    MoveOneStep();
-  } else {
-    if (currentDirection == Direction::NORTH) {
-      // ******
-      if (direction == Direction::EAST) TurnRight();
-      else if (direction == Direction::WEST) TurnLeft();
-      else if (direction == Direction::SOUTH) TurnBack();
-      currentDirection = direction;
-      MoveOneStep();
-      // ******
-    } else if (currentDirection == Direction::SOUTH) {
-      // ******
-      if (direction == Direction::EAST) TurnLeft();
-      else if (direction == Direction::WEST) TurnRight();
-      else if (direction == Direction::NORTH) TurnBack();
-      currentDirection = direction;
-      MoveOneStep();
-      // ******
-    } else if (currentDirection == Direction::EAST) {
-      // ******
-      if (direction == Direction::NORTH) TurnLeft();
-      else if (direction == Direction::WEST) TurnBack();
-      else if (direction == Direction::SOUTH) TurnRight();
-      currentDirection = direction;
-      MoveOneStep();
-      // ******
-    } else if (currentDirection == Direction::WEST) {
-      // ******
-      if (direction == Direction::NORTH) TurnRight();
-      else if (direction == Direction::EAST) TurnBack();
-      else if (direction == Direction::SOUTH) TurnLeft();
-      currentDirection = direction;
-      MoveOneStep();
-      // ******
-    }
-  }
-}
-
-void MotorController::MoveOneStep() {
+void MotorController::MoveForward() {
   // In order to move forward, left motor should turn cw,
   // and right motor should turn ccw.
   SetMotorDirection(1,0);
-  // TODO: Find required time interval for our robot to
+  // Find required time interval for our robot to
   // move one virtual grid. (Current value assigned randomly.)
-  StartTimer(0x00F42400);
-  // TODO: Find an appropriate motor speed (considering time)
+  StartTimer(0x1312D00); // 20 Million
+  // Find an appropriate motor speed (considering time)
   // for our robot to move one virtual grid. (Current value assigned randomly.)
   SetMotorSpeed(300,300);
   // Wait for timer.
   while ((TIMER0_RIS_R & 0x00000001) == 0);
-  SetMotorSpeed(0,0);
+  SetMotorSpeed(50,50);
   EndTimer();
 }
 
 void MotorController::TurnLeft() {
   // In order to turn left, both motors should turn ccw.
   SetMotorDirection(0,0);
-  // TODO: Find required time interval for our robot to
-  // turn left. (Current value assigned randomly.)
-  StartTimer(0x00F42400);
-  // TODO: Find an appropriate motor speed (considering time)
-  // for our robot to turn left. (Current value assigned randomly.)
+  // Find required time interval for our robot to
+  // turn left.
+  StartTimer(0xA037A0); // 10.5 million
+  // Find an appropriate motor speed (considering time)
+  // for our robot to turn left.
   SetMotorSpeed(300,300);
   // Wait for timer.
   while ((TIMER0_RIS_R & 0x00000001) == 0);
-  SetMotorSpeed(0,0);
+  SetMotorSpeed(50,50);
   EndTimer();
 }
 
 void MotorController::TurnRight() {
   // In order to turn right, both motors should turn cw.
   SetMotorDirection(1,1);
-  // TODO: Find required time interval for our robot to
-  // turn right. (Current value assigned randomly.)
-  StartTimer(0x00F42400);
-  // TODO: Find an appropriate motor speed (considering time)
-  // for our robot to turn right. (Current value assigned randomly.)
+  // Find required time interval for our robot to
+  // turn right.
+  StartTimer(0xA037A0); // 10.5 million
+  // Find an appropriate motor speed (considering time)
+  // for our robot to turn right.
   SetMotorSpeed(300,300);
   // Wait for timer.
   while ((TIMER0_RIS_R & 0x00000001) == 0);
-  SetMotorSpeed(0,0);
+  SetMotorSpeed(50,50);
   EndTimer();
 }
 

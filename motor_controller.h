@@ -17,15 +17,6 @@
 #include "driverlib/pwm.h"
 #include "driverlib/sysctl.h"
 
-enum Direction {
-  NORTH,
-  SOUTH,
-  EAST,
-  WEST,
-  START,
-  STOP
-};
-
 class MotorController {
 
 public:
@@ -34,12 +25,15 @@ public:
   // Configure registers relevant to motors.
   void Configure();
 
-  // Move the robot one step in the given direction.
-  void Move(Direction direction);
+  // Move one step forward.
+  void MoveForward();
+  
+  // Methods for turning actions.
+  void TurnLeft();
+  void TurnRight();
+  void TurnBack();
 
-protected:
-  Direction currentDirection = Direction::START;
-
+private:
   // Configure PWM to be able to change motor speed.    
   void ConfigurePWM();
 
@@ -60,12 +54,6 @@ protected:
 
   // Disable timer.
   void EndTimer();
-
-  // Helper methods for moving action.
-  void MoveOneStep();
-  void TurnLeft();
-  void TurnRight();
-  void TurnBack();
 };
 
 #endif //MOTOR_CONTROLLER_H
