@@ -7,6 +7,7 @@
 
 #include "motor_controller.h"
 #include "distance_controller.h"
+#include "uart_controller.h"
 
 /*
 enum Direction {
@@ -25,11 +26,13 @@ public:
   RobotBrain() {
     motorController = new MotorController();
     distanceController = new DistanceController();
+    uartController = new UARTController();
   }
   
   ~RobotBrain() {
     delete motorController;
     delete distanceController;
+    delete uartController;
   }
 
   void Work();
@@ -37,6 +40,7 @@ public:
 protected:
   MotorController *motorController;
   DistanceController *distanceController;
+  UARTController *uartController;
 };
 
 #endif //ROBOT_BRAIN_H

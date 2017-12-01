@@ -2390,4 +2390,10 @@
     <file>
         <name>$PROJ_DIR$\robot_brain.h</name>
     </file>
+    <file>
+        <name>$PROJ_DIR$\uart_controller.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\uart_controller.h</name>
+    </file>
 </project>
