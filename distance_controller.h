@@ -21,12 +21,12 @@ public:
   bool CheckObstacleLeft();
   bool CheckObstacleRight();
 
-protected:
+private:
   // Configure ADC to read data from distance sensors.
   void ConfigureADC();
   
   // Calculate distance to obstacle
-  bool IsObstacle(volatile int result);
+  bool IsObstacle(int result);
 };
 
 #endif //DISTANCE_CONTROLLER_H

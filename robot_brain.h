@@ -9,17 +9,6 @@
 #include "distance_controller.h"
 #include "uart_controller.h"
 
-/*
-enum Direction {
-  NORTH,
-  SOUTH,
-  EAST,
-  WEST,
-  START,
-  STOP
-};
-*/
-
 class RobotBrain {
 
 public:

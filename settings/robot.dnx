@@ -49,22 +49,28 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <LMIFTDIDriver>
-        <LMIFTDIserialNo>0E2223AB</LMIFTDIserialNo>
+        <LMIFTDIserialNo>0E22286E</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
     </LMIFTDIDriver>
     <DebugChecksum>
-        <Checksum>761876115</Checksum>
+        <Checksum>1395636668</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
         <StopOnThrow>_ 0</StopOnThrow>
     </Exceptions>
     <CallStack>
-        <ShowArgs>0</ShowArgs>
+        <ShowArgs>1</ShowArgs>
     </CallStack>
     <Disassembly>
         <MixedMode>1</MixedMode>
     </Disassembly>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints>
+        <Count>0</Count>
+    </Breakpoints>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -74,20 +80,14 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
+    <Aliases>
+        <Count>0</Count>
+        <SuppressDialog>0</SuppressDialog>
+    </Aliases>
     <CallStackLog>
         <Enabled>0</Enabled>
     </CallStackLog>
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints>
-        <Count>0</Count>
-    </Breakpoints>
-    <Aliases>
-        <Count>0</Count>
-        <SuppressDialog>0</SuppressDialog>
-    </Aliases>
 </settings>

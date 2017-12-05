@@ -1,5 +1,5 @@
 //
-// Created by Mert Akozcan on 11/26/17.
+// Created by Mert Akozcan and Zhuoming Zhang on 11/26/17.
 //
 
 #include "motor_controller.h"
@@ -9,14 +9,14 @@ void MotorController::MoveForward() {
   // and right motor should turn ccw.
   SetMotorDirection(1,0);
   // Find required time interval for our robot to
-  // move one virtual grid. (Current value assigned randomly.)
-  StartTimer(0x1312D00); // 20 Million
+  // move one virtual grid.
+  StartTimer(0x989680); // 10 Million
   // Find an appropriate motor speed (considering time)
-  // for our robot to move one virtual grid. (Current value assigned randomly.)
-  SetMotorSpeed(300,300);
+  // for our robot to move one virtual grid.
+  SetMotorSpeed(300,320);
   // Wait for timer.
   while ((TIMER0_RIS_R & 0x00000001) == 0);
-  SetMotorSpeed(50,50);
+  SetMotorSpeed(10,10);
   EndTimer();
 }
 
@@ -31,7 +31,7 @@ void MotorController::TurnLeft() {
   SetMotorSpeed(300,300);
   // Wait for timer.
   while ((TIMER0_RIS_R & 0x00000001) == 0);
-  SetMotorSpeed(50,50);
+  SetMotorSpeed(10,10);
   EndTimer();
 }
 
@@ -46,7 +46,7 @@ void MotorController::TurnRight() {
   SetMotorSpeed(300,300);
   // Wait for timer.
   while ((TIMER0_RIS_R & 0x00000001) == 0);
-  SetMotorSpeed(50,50);
+  SetMotorSpeed(10,10);
   EndTimer();
 }
 

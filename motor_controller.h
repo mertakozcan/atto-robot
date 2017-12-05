@@ -1,5 +1,5 @@
 //
-// Created by Mert Akozcan on 11/26/17.
+// Created by Mert Akozcan and Zhuoming Zhang on 11/26/17.
 //
 
 #ifndef MOTOR_CONTROLLER_H
@@ -33,7 +33,7 @@ public:
   void TurnRight();
   void TurnBack();
 
-private:
+protected:
   // Configure PWM to be able to change motor speed.    
   void ConfigurePWM();
 

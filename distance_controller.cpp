@@ -9,9 +9,9 @@ bool DistanceController::CheckObstacleForward() {
   ADC0_PSSI_R |= 0x8;
   // Wait for conversion to be completed
   while ((ADC0_RIS_R & 0x8) == 0);
+  int result = ADC0_SSFIFO3_R;
   // Clear SS3 flag
   ADC0_ISC_R |= (1<<3);
-  volatile int result = ADC0_SSFIFO3_R;
   // Check whether there is an obstacle in forward direction.
   return !IsObstacle(result);
 }
@@ -21,9 +21,9 @@ bool DistanceController::CheckObstacleLeft() {
   ADC0_PSSI_R |= 0x4;
   // Wait for conversion to be completed
   while ((ADC0_RIS_R & 0x4) == 0);
+  int result = ADC0_SSFIFO2_R;
   // Clear SS2 flag
   ADC0_ISC_R |= (1<<2);
-  volatile int result = ADC0_SSFIFO2_R;
   // Check whether there is an obstacle in forward direction.
   return !IsObstacle(result);
 }
@@ -33,17 +33,17 @@ bool DistanceController::CheckObstacleRight() {
   ADC0_PSSI_R |= 0x2;
   // Wait for conversion to be completed
   while ((ADC0_RIS_R & 0x2) == 0);
+  int result = ADC0_SSFIFO1_R;
   // Clear SS1 flag
   ADC0_ISC_R |= (1<<1);
-  volatile int result = ADC0_SSFIFO1_R;
   // Check whether there is an obstacle in forward direction.
   return !IsObstacle(result);
 }
 
-bool DistanceController::IsObstacle(volatile int result) {
-  double volts = (result * 3.3) / 4095; // Input 3.3V
-  double distance = 27.86 * (1 / (pow(volts, 1.15)));
-  return (distance < 17.0);
+bool DistanceController::IsObstacle(int result) {
+  float volts = ((float)result * 3.3f) / 4095.0f; // Input 3.3V
+  float distance = 27.86f * (1.0f / (pow(volts, 1.15f)));
+  return (distance < 17.0f);
 }
 
 void DistanceController::Configure() {
