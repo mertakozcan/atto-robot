@@ -8,20 +8,22 @@
 
     <TextView
         android:id="@+id/feedbackScreen"
-        android:layout_width="410dp"
-        android:layout_height="165dp"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="172dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/manualButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/leftButton"
-        android:layout_width="205dp"
-        android:layout_height="261dp"
+        android:layout_width="0dp"
+        android:layout_height="289dp"
+        android:background="@android:color/holo_purple"
+        android:onClick="turnLeft"
         android:text="LEFT"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toStartOf="@+id/rightButton"
@@ -29,8 +31,10 @@
 
     <Button
         android:id="@+id/rightButton"
-        android:layout_width="205dp"
-        android:layout_height="261dp"
+        android:layout_width="0dp"
+        android:layout_height="289dp"
+        android:background="?android:attr/colorFocusedHighlight"
+        android:onClick="turnRight"
         android:text="RIGHT"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,12 +42,37 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="410dp"
-        android:layout_height="167dp"
+        android:layout_width="0dp"
+        android:layout_height="178dp"
+        android:background="@android:color/holo_blue_dark"
+        android:onClick="turnBack"
         android:text="BACK"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/autoButton"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@android:color/holo_green_light"
+        android:onClick="selectAutomatic"
+        android:text="AUTOMATIC"
+        app:layout_constraintBottom_toTopOf="@+id/leftButton"
+        app:layout_constraintEnd_toStartOf="@+id/manualButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/manualButton"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@android:color/holo_red_light"
+        android:onClick="selectManual"
+        android:text="MANUAL"
+        app:layout_constraintBottom_toTopOf="@+id/rightButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/autoButton" />
 
 </android.support.constraint.ConstraintLayout>
